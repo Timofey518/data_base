@@ -45,7 +45,6 @@ CREATE TABLE characteristic
  characteristic_Name text NOT NULL,
  unit text NOT NULL
 );
-drop table if exists characteristic_product;
 CREATE TABLE characteristic_product 
 (
  fk_product_id int REFERENCES product (product_id) NOT NULL,
@@ -53,3 +52,4 @@ CREATE TABLE characteristic_product
     importance text NOT NULL, 
 constraint characteristic_product_pk primary key (fk_product_id, fk_characteristic_id)
 );
+
