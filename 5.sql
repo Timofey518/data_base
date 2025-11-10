@@ -21,20 +21,20 @@ CREATE TABLE product
  category text NOT NULL,
  article varchar(50) NOT NULL,
  description text,
- cost_Price decimal(10, 2) NOT NULL,
- rec_Price decimal(10, 2) NOT NULL,
+ cost_Price money NOT NULL,
+ rec_Price money NOT NULL,
  best_Before_Date interval NOT NULL,
  storage_Conditions text NOT NULL
 );
 CREATE TABLE supply 
 (
  supply_id serial PRIMARY KEY NOT NULL,
- fk_supplier_id int REFERENCES supplier (supplier_id) NOT NULL,
- fk_product_id int REFERENCES product (product_id) NOT NULL,
+ supplier_id int REFERENCES supplier (supplier_id) NOT NULL,
+ product_id int REFERENCES product (product_id) NOT NULL,
  delivery_Date date NOT NULL,
  quantity int NOT NULL,
- unit_Price decimal(10, 2) NOT NULL,
- total_Amount decimal(10, 2) NOT NULL,
+ unit_Price money NOT NULL,
+ total_Amount money NOT NULL,
  invoice_Number varchar(20) NOT NULL,
  contract_Number varchar(20) NOT NULL,
  status text NOT NULL
@@ -47,9 +47,9 @@ CREATE TABLE characteristic
 );
 CREATE TABLE characteristic_product 
 (
- fk_product_id int REFERENCES product (product_id) NOT NULL,
- fk_characteristic_id int REFERENCES characteristic (characteristic_id) NOT NULL,
-    importance text NOT NULL, 
-constraint characteristic_product_pk primary key (fk_product_id, fk_characteristic_id)
+ product_id int REFERENCES product (product_id) NOT NULL,
+ characteristic_id int REFERENCES characteristic (characteristic_id) NOT NULL,
+ importance text NOT NULL
 );
+
 
